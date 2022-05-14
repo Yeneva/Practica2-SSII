@@ -9,8 +9,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import export_graphviz
 from subprocess import call
 
+
 import os
-os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
+os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin' #cambiar ruta por la que tengas instalado el graphviz
 
 with open('jsons/users_IA_clases.json', 'r') as file:
     train = json.load(file)
@@ -40,7 +41,7 @@ dfInfo["phishingRecived"] = phishingRecived
 dfInfo["phishingClicked"] = phishingClicked
 dfVuln["vulnerable"] = vulnerable
 
-dfProbability = pd.DataFrame (clickProbability, columns= ['probability'])
+dfProbability = pd.DataFrame (clickProbability, columns=['probability'])
 dfTrain = dfInfo.join(dfProbability)
 
 # ---------------- REGRESION LINEAL ------------------- #
@@ -102,7 +103,7 @@ graph.render("ej6/tree.gv", view=True).replace('\\', '/')
 
 # ---------------- RANDOM FOREST ------------------- #
 
-clf = RandomForestClassifier(max_depth=2, random_state=0,n_estimators=10)
+clf = RandomForestClassifier(max_depth=2, random_state=0, n_estimators=10)
 clf.fit(dfTrain_X_train, dfVuln_Y_train.values.ravel())
 print("Random forest .predict", clf.predict(dfTrain))
 print(str(dfTrain_X_train[0]) + " " + str(dfVuln_Y_train.values.ravel()[0]))
