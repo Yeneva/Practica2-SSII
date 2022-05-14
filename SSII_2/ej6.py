@@ -11,7 +11,7 @@ from subprocess import call
 
 
 import os
-os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin' # cambiar ruta por la que tengas instalado el graphviz
+os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin' #cambiar ruta por la que tengas instalado el graphviz
 
 with open('jsons/users_IA_clases.json', 'r') as file:
     train = json.load(file)
